@@ -4,7 +4,7 @@ const dataSchema = require("./data.schema")
 mongoose.connect('mongodb://localhost:27017/viettel_purifier', {useNewUrlParser: true, useUnifiedTopology: true})
 
 const DataModel = mongoose.model('datas', dataSchema)
-const now = new Date('2021-01-08T09:00:00')
+const now = new Date('2021-01-19T09:00:00')
 
 const generateData = async () => {
     for (var i = 0; i < 1000; i++) {
@@ -22,7 +22,7 @@ const generateData = async () => {
         data.createdAt = new Date(now.getTime() - i * 300000)
         console.log(data.createdAt.toISOString())
         data.updatedAt = new Date(now.getTime() - i * 300000)
-    
+        
         await data.save()
     }
 }
